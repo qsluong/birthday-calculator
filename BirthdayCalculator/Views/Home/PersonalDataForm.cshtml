@@ -1,0 +1,19 @@
+﻿@model BirthdayCalculator.Models.PersonalData
+
+<form asp-action="PersonalDataForm" method="post">
+    <div>
+        <label>
+            Voornaam:
+            <input asp-for="Firstname" type="text" placeholder="Voer jouw voornaam in"/>
+        </label>
+        <label>
+            Achternaam:
+            <input asp-for="Lastname" type="text" placeholder="Voer jouw achternaam in"/>
+        </label>
+    </div>
+    <div>
+        <label>Geboortedatum</label>
+        <input asp-for="Birthdate" type="date" placeholder="DD/MM/YYYY"/>
+    </div>
+    <button type="submit">Calculate</button>
+</form>

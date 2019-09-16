@@ -1,0 +1,15 @@
+﻿@model BirthdayCalculator.Models.PersonalData
+@{
+    var days = "";
+}
+<div>
+    @if (Model.CalculateDaysLeft() < 2)
+    {
+        days = "dag";
+    }
+    else
+    {
+        days = "dagen";
+    }
+    <p>Nog @Model.CalculateDaysLeft() @days tot je @Model.CalculateNextBirthdayAge()-e verjaardag</p>
+</div>

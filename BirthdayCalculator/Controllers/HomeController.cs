@@ -10,20 +10,26 @@ namespace BirthdayCalculator.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public ViewResult Index()
+        {
+            ViewBag.CurrentDate = DateTime.Now.Date.ToLongDateString();
+            return View();
+        }
+
+        [HttpGet]
+        public ViewResult PersonalDataForm()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public ViewResult PersonalDataForm(PersonalData personalData)
         {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            if (personalData.CalculateDaysLeft() == 0)
+            {
+                return View("Congratulations", personalData);
+            }
+            return View("Calculated", personalData);
         }
     }
 }
